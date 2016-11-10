@@ -11,6 +11,7 @@ namespace KontorsprylarAB
     public static class DataBaseTools
     {
 
+
         const string CON_STR = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=blixthalka;Integrated Security=True;Pooling=False";
 
         public static List<Product> GetAllProducts(int id)
