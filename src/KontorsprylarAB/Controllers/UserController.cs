@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KontorsprylarAB.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace KontorsprylarAB.Controllers
     {
         public IActionResult ShoppingCart()
         {
-            return View();
+            return View(this.HttpContext);
         }
     }
 }
