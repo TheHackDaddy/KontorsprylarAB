@@ -10,7 +10,7 @@
             {
                 <a asp-controller="Products" asp-action="View/@item.Id">
                     <div class="col-sm-4">
-                        <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                        <img src="@(item.Image == "" ? "https://placehold.it/150x80?text=IMAGE" : item.Image)" class="img-responsive" style="width:100%" alt="Image">
                         <div>
                             <b> @item.Name </b>
                             <br />
