@@ -9,5 +9,11 @@ namespace KontorsprylarAB.Models
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }
+
+        public ShoppingItem(Product product, int qty)
+        {
+            Quantity = qty;
+            Product = product;
+        }
     }
 }

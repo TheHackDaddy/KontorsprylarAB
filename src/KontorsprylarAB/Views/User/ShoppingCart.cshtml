@@ -1,4 +1,10 @@
 ﻿@{ 
     Layout = "_Layout";
-}
+ }
 
+@model List<ShoppingItem>
+
+@foreach (var item in Model)
+{
+    @item.Product.Name;
+}

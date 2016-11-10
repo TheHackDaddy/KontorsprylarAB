@@ -21,7 +21,7 @@ namespace KontorsprylarAB.Models
             Id = nextId;
             nextId++;
         }
-        public void addToShoppingCart(ShoppingItem itemToAdd, HttpContext session)
+        public static void addToShoppingCart(ShoppingItem itemToAdd, HttpContext session)
         {
             session.Items.Values.Add(itemToAdd);
         }
@@ -32,10 +32,17 @@ namespace KontorsprylarAB.Models
             session.Items.Values.Remove(itemToRemove);
         }
 
-        public string GetShoppingCartList(HttpContext session)
+        public static List<ShoppingItem> GetShoppingCartList(HttpContext session)
         {
-           string test = session.Items.Values.GetType().ToString();
-           return test;
+            var list = new List<ShoppingItem>();
+
+            foreach (var item in session.Items.Values)
+            {
+                var tempItem = (ShoppingItem)item;
+                list.Add(tempItem);
+            }
+            return list;
+        
         }
     }
     

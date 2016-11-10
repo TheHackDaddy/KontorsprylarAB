@@ -11,7 +11,19 @@ namespace KontorsprylarAB.Controllers
     {
         public IActionResult ShoppingCart()
         {
-            return View(this.HttpContext);
+            var list = Models.ShoppingCart.GetShoppingCartList(HttpContext);
+
+            return View(list);
+        }
+
+        public IActionResult AddToCart()
+        {
+
+            var item = new ShoppingItem(DataBaseTools.GetSpecifiedProduct(2), 1);
+
+            Models.ShoppingCart.addToShoppingCart(item, this.HttpContext);
+
+            return Redirect("Index");
         }
     }
 }
