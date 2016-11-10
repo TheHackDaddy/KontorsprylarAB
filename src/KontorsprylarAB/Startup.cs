@@ -24,7 +24,7 @@ namespace KontorsprylarAB
                 o.UseSqlServer(connString));
 
             services.AddIdentity<IdentityUser, IdentityRole>(o =>
-            o.Cookies.ApplicationCookie.LoginPath = "/account/login")
+            o.Cookies.ApplicationCookie.LoginPath = "/admin/login")
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -34,8 +34,8 @@ namespace KontorsprylarAB
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-
             app.UseDeveloperExceptionPage();
+            app.UseIdentity();
             app.UseMvcWithDefaultRoute();
         }
     }
