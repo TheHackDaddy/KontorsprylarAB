@@ -65,14 +65,61 @@ namespace KontorsprylarAB
             return allProducts;
         }
 
-        public static List<Product> GetSpecifiedProduct(int id)
+        public static Product GetSpecifiedProduct(int id)
         {
-            var oneProduct = new List<Product>();
+            var oneProduct = new Product();
 
 
             SqlConnection myConnection = new SqlConnection(CON_STR);
             SqlCommand myCommand;
-            myCommand = new SqlCommand($"SELECT * FROM Products where 'id' = '{id}'", myConnection);
+            myCommand = new SqlCommand($"SELECT * FROM Products where id = '{id}'", myConnection);
+
+
+            try
+            {
+                myConnection.Open();
+
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+
+
+
+
+                    oneProduct.Id = int.Parse(myReader["Id"].ToString());
+                    oneProduct.ArticleNumber = myReader["ArticleNumber"].ToString();
+                    oneProduct.Name = myReader["Name"].ToString();
+                    oneProduct.Stock = int.Parse(myReader["Stock"].ToString());
+                    oneProduct.ListPrice = double.Parse(myReader["ListPrice"].ToString());
+                    oneProduct.Description = myReader["Description"].ToString() ?? "test";
+                    oneProduct.Image = myReader["Image"].ToString() ?? "test";
+                    oneProduct.Category = int.Parse(myReader["Category"].ToString());
+                    
+                }
+            }
+            catch (Exception exception)
+            {
+
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return oneProduct;
+        }
+
+
+        public static List<Product> GetPopularProducts()
+        {
+            var popularProducts = new List<Product>();
+
+
+            SqlConnection myConnection = new SqlConnection(CON_STR);
+            SqlCommand myCommand;
+          
+                myCommand = new SqlCommand("SELECT * FROM Products", myConnection);
+            
 
 
             try
@@ -84,7 +131,7 @@ namespace KontorsprylarAB
                 {
                     string hej = myReader["Name"].ToString();
 
-                    oneProduct.Add(new Product
+                    popularProducts.Add(new Product
                     {
                         Id = int.Parse(myReader["Id"].ToString()),
                         ArticleNumber = myReader["ArticleNumber"].ToString(),
@@ -106,10 +153,8 @@ namespace KontorsprylarAB
                 myConnection.Close();
             }
 
-            return oneProduct;
+            return popularProducts;
         }
-
-
     }
 
 }

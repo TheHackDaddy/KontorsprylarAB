@@ -1,2 +1,33 @@
-﻿
-<h1>Indexsidan</h1>
+﻿@model List<Product>
+
+<div class="container text-center">
+    <h3>Populära produkter</h3><br>
+    <div class="row">
+
+
+        @{
+            foreach (var item in Model)
+            {
+                <a asp-controller="Products" asp-action="View/@item.Id">
+                    <div class="col-sm-4">
+                        <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                        <div>
+                            <br />
+                            <b> @item.Name </b>
+                            <br />
+                            @item.Description
+                            <br />
+                        </div>
+                        <br />
+                        <a href=""><img src="https://cdn0.iconfinder.com/data/icons/shopping-extras-set-1/512/1-128.png" alt="Add to shopping cart" height="50" /></a>
+                    </div>
+                </a>
+            }
+        }
+
+
+
+
+        
+    </div>
+</div><br>
