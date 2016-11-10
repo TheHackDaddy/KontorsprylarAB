@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KontorsprylarAB.Controllers
 {
-    public class UserController
+    public class UserController : Controller
     {
         public IActionResult ShoppingCart()
         {
