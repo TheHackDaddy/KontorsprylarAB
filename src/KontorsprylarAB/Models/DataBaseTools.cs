@@ -109,7 +109,28 @@ namespace KontorsprylarAB
             return oneProduct;
         }
 
+        public static void AddProduct(AddProductVM viewModel)
+        {
+            SqlConnection myConnection = new SqlConnection(CON_STR);
+            SqlCommand myCommand;
+            myCommand = new SqlCommand($"INSERT INTO Products (ArticleNumber, Name, Stock, ListPrice, Description, Image, Category) VALUES ('{viewModel.ArticleNumber}', '{viewModel.Name}', {viewModel.Stock}, {viewModel.ListPrice}, '{viewModel.Description}', '{viewModel.Image}', {viewModel.Category})", myConnection);
 
+
+            try
+            {
+                myConnection.Open();
+
+                var result = myCommand.ExecuteNonQuery();
+            }
+            catch (Exception exception)
+            {
+
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
     }
 
 }
