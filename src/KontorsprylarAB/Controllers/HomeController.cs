@@ -15,9 +15,11 @@ namespace KontorsprylarAB.Controllers
             return View();
         }
 
-        public IActionResult Products()
+        public IActionResult Products(int id)
         {
-            return View(DataBaseTools.GetAllProducts());
+            return View(DataBaseTools.GetAllProducts(id));
         }
+
+
     }
 }
