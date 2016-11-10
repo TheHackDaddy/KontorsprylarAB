@@ -31,15 +31,15 @@ namespace KontorsprylarAB.Controllers
         }
 
         [AllowAnonymous]
-        public string Index()
+        public IActionResult Index()
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                return $"You are logged in as {User.Identity.Name}";
+                return View();
             }
             else
             {
-                return "You are not logged in.";
+                return RedirectToAction("Login");
             }
         }
 
@@ -78,6 +78,17 @@ namespace KontorsprylarAB.Controllers
                 return RedirectToAction(nameof(AdminController.Index));
             else
                 return Redirect(returnUrl);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult AddProduct(AddProductVM viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            DataBaseTools.AddProduct(viewModel);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

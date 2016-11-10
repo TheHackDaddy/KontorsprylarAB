@@ -1,9 +1,17 @@
-﻿@model List<Product>
+﻿@model Product
 
-<div class="col-sm-4">
-    <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    <div>
+<br />
+<div align="center">
+    <div class="col-sm-5">
+        <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+        <div align="left">
+            <h3>Produkt: @Model.Name</h3>
+            <a href=""><img src="https://cdn0.iconfinder.com/data/icons/shopping-extras-set-1/512/1-128.png" alt="Add to shopping cart" height="50" align ="right" /></a>
+            <h4>Bekrivning: @Model.Description</h4>
+            <h2>Pris: @Model.ListPrice:-</h2>
 
+
+        </div>
     </div>
 </div>
 
