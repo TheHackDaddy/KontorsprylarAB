@@ -1,0 +1,10 @@
+﻿@model List<Product>
+
+@{
+    foreach (var item in Model)
+    {
+        <b>Namn:</b> @item.Name<br />
+    }
+}
+
+<a asp-controller="Home" asp-action="Index">Index</a>
