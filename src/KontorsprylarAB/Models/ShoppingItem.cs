@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace KontorsprylarAB.Models
 {
-    public class User
+    public class ShoppingItem
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-       
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
     }
 }

@@ -1,10 +1,36 @@
 ﻿@model List<Product>
 
-@{
-    foreach (var item in Model)
-    {
-        <b>Namn:</b> @item.Name<br />
-    }
-}
+<div class="container text-center">
+    <h3>Products</h3><br>
+    <div class="row">
 
-<a asp-controller="Home" asp-action="Index">Index</a>
+
+        @{
+            foreach (var item in Model)
+            {
+                <a asp-controller="Products" asp-action="View" asp-route-{Id}="@item.Id">
+                    <div class="col-sm-4">
+                        <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                        <div>
+                            <b> @item.Name </b>
+                            <br />
+                            @item.Description
+                        </div>
+                    </div>
+                </a>
+            }
+        }
+
+
+
+       
+        <div class="col-sm-4">
+            <div class="well">
+                <p>Some text..</p>
+            </div>
+            <div class="well">
+                <p>Some text..</p>
+            </div>
+        </div>
+    </div>
+</div><br>

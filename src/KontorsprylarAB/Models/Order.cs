@@ -7,8 +7,11 @@ namespace KontorsprylarAB.Models
 {
     public class Order
     {
-        public Customer Customer { get; set; }
+        //TODO NEEDS USER INFO TO TRACK ORDER HISTORY (WHEN IDENTITY FW IS ONLINE)  
+
+        public ShoppingCart OrderedProducts { get; set; }
         public Address DeliveryAddress { get; set; }
         public Address InvoiceAddress { get; set; }
+
     }
 }
