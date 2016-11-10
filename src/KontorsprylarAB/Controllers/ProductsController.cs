@@ -8,15 +8,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KontorsprylarAB.Controllers
 {
-    public class HomeController : Controller
+    public class ProductsController : Controller
     {
-        public IActionResult Index()
+        // GET: /<controller>/
+        public IActionResult View(int id)
         {
-            return View();
+            return View(DataBaseTools.GetSpecifiedProduct(id));
         }
 
-       
-
+        public IActionResult Products(int id)
+        {
+            return View(DataBaseTools.GetAllProducts(id));
+        }
 
     }
 }
