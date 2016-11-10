@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -17,6 +19,15 @@ namespace KontorsprylarAB
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var connString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=AuthorizationDB;Integrated Security=True;Pooling=False";
+            services.AddDbContext<IdentityDbContext>(o =>
+                o.UseSqlServer(connString));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(o =>
+            o.Cookies.ApplicationCookie.LoginPath = "/account/login")
+                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc();
         }
 
