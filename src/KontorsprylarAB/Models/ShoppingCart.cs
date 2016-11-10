@@ -23,7 +23,7 @@ namespace KontorsprylarAB.Models
         }
         public static void addToShoppingCart(ShoppingItem itemToAdd, HttpContext session)
         {
-            session.Items.Values.Add(itemToAdd);
+            session.Items.Values.Add(itemToAdd.ToString());
         }
 
         public void removeFromShoppingCart(ShoppingItem itemToRemove, HttpContext session)
