@@ -35,7 +35,7 @@ namespace KontorsprylarAB.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                return View();
+                return RedirectToAction("AddProduct");
             }
             else
             {
@@ -80,7 +80,6 @@ namespace KontorsprylarAB.Controllers
                 return Redirect(returnUrl);
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult AddProduct(AddProductVM viewModel)
         {
@@ -89,6 +88,12 @@ namespace KontorsprylarAB.Controllers
 
             DataBaseTools.AddProduct(viewModel);
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            return View();
         }
     }
 }

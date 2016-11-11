@@ -14,8 +14,5 @@ namespace KontorsprylarAB.Controllers
         {
             return View(DataBaseTools.GetPopularProducts());
         }
-
-      
-
     }
 }
